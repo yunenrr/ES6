@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Las flechas gordas para las funciones anónimas</title>
+  <script>
+    /**
+     * Función normal
+    */
+    var normalFunction = function(a){
+      return a;
+    }
+    console.log(normalFunction("Hola mundo!!"));
+
+    /**
+     * Función arrow con un parámetro.
+     * a => a; La primer "a" son los parámetros, la segunda es el proceso de la función, en este caso retornar el valor "a".
+    */
+    var arrowFunction = a => a;
+    console.log(normalFunction("Hola mundo con función arrow!!"));
+
+    /**
+     * Función arrow con varios parámetros.
+     * @param {number} a
+     * @param {number} b
+     * @return {number}
+    */
+    var plus = (a,b) => a+b;
+    console.log(plus(2,3));
+
+    var withoutParams = () => console.log("¡Está función es sin parámetros!");
+    console.log(withoutParams());
+
+    //Se llama la función arrow desde otra función.
+    setTimeout(withoutParams(),1000);
+
+    /*
+    Función arrow con varias instrucciones dentro.
+    */
+    var largeFunction = () => {
+      a = "Hi";
+      b = "World";
+      alert(a + " " + b);
+    }
+    largeFunction(); //Llamamos a la función.
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
