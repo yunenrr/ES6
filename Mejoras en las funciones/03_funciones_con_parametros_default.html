@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Valores por default en argumentos</title>
+  <script>
+    /**
+     * Función ES5 para valores por default, múltiplica dos números y retorna el resultado. Si recibe solo un parámetro le asigna al otro valor un 1 como valor 
+     * por defecto.
+     * @param {number} a
+     * @param {number} b
+     * @returns {number}
+    */
+    function multiplicar(a,b){
+      b = (typeof b == 'undefined')? 1:b;
+      return a*b;
+    }
+
+    /**
+     * Función ES6 para valores por default, múltiplica dos números y retorna el resultado. Si recibe solo un parámetro le asigna al otro valor un 1 como valor 
+     * por defecto.
+     * @param {number} a
+     * @param {number} b
+     * @returns {number}
+    */
+    function multiplicarDos(a, b = 1){
+      return a*b;
+    }
+    /* NOTAS: Se puede asignar por valor deault: valores, arreglos, funciones. */
+    console.log(multiplicarDos(5));
+    console.log(multiplicarDos(5,2));
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
