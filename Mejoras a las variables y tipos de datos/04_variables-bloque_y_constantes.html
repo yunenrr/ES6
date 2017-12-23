@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manejo de variables bloque y constantes</title>
+  <script>
+    /**
+     * Función que muestra un mensaje en la consola.
+    */
+    function letTest(){
+      if(true){
+        let x = 23; //Declaramos una variable x con valor de 23, afuera del if la variable no existe.
+        console.log(x);
+      }
+      console.log(x); //Va a mostar un mensaje indicando que la variable no existe.
+    }
+    letTest();
+
+    //Prueba de const
+    const A = 7; // Por lo general las constantes van en mayúsculas.
+    A = 5;
+    console.log(a);
+  </script>
+</head>
+<body>
+  <div>
+    <h1>Let</h1>
+    <p>
+      Indica que una variable sólo va a estar definida en un bloque en particular, al 
+      terminar el bloque la variable deja de existir, esto es muy útil para evitar
+      errores lógicos cuando alteramos una variable que no deberíamos.
+    </p>
+  </div>
+  <div>
+    <h1>Const</h1>
+    <p>
+      Previene que una variable declarada cambie de valor, convirtiéndose efectivamente en una constante. <br>
+      <strong>Recomendable</strong> usar <strong>contantes</strong> para valores que sabemos que <strong>no van a cambiar</strong>,
+      así se evitan modificaciones inesperadas.
+    </p>
+  </div>
+</body>
+</html>
