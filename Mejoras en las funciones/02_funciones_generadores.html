@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Funciones Generadores</title>
+  <script>
+    /**
+     * Es una función generadora que retorna los números entre un rango establecido por los parámetros.
+     * @param {number} inicio
+     * @param {number} fin
+     * @param {number} incremento
+     * @returns {number}
+    */
+    function* rango(inicio, fin, incremento){
+      while(inicio <= fin){
+        yield inicio; //Retorna el valor de inicio y lo almacena en "memoria". La primera vez va a retornar un 0, pero la segunda vez va a retornar 2 y así sucesivamente.
+        inicio += incremento;
+      }
+    }
+
+    /*
+    let: Permite declarar variables limitando su alcance (scope) al bloque, declaración, o expresión donde se está usando. Lo anterior diferencia  la expresión let de la palabra reservada var , la cual define una variable global o local en una función sin importar el ámbito del bloque.
+    */
+    for(let i of rango(0,10,2)){
+      console.log(i);
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
