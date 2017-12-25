@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Symbol Type</title>
+  <script>
+    var simOne = Symbol(); //Declaramos un símbolo vacío y sin descripción.
+    var simTwo = Symbol("Esto no es un valor, es una descripción."); //Declaramos un símbolo vacío pero con descripción.
+    console.log(Symbol("foo") === Symbol("foo")); //Retorna un false, porque a pesar de tener la misma descripción sus valores son distintos.
+  </script>
+</head>
+<body>
+  <h1>Symbol Type</h1>
+  <ul>
+    <li>Los <strong>símbolos</strong> son un nuevo de tipo de dato primitivo.</li>
+    <li>Los <strong>símbolos</strong> son <strong>únicos</strong> e <strong>inmutables</strong> (No pueden cambiarse) y son utilizados como
+    identificados para propiedades de objetos.</li>
+    <li>Los <strong>símbolos</strong> pueden tener una descripción opcional, pero sólo es utilizada para fines del depurador.</li>
+    <li>Cada valor del tipo <strong>símbolo</strong> tiene asociado un valor del tipo <strong>String</strong> o <strong>Undefined</strong> que sirve únicamente como descripción del símbolo.</li>
+    <li>El constructor <strong>símbolo</strong> no debe ser usado con el operador <strong>new</strong>.</li>
+    <li>Tampoco debe ser extendido mediante clases.</li>
+  </ul>
+</body>
+</html>
