@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Templates Strings</title>
+  <script>
+    //Template sencillo.
+    var a = `Esta es una template string.`;
+    console.log(a);
+
+    //Template conteniendo valores.
+    var numberFive = 5;
+    /*
+    NOTA: El ${} sirve para hacer referencia a cualquier variable, independientemente del tipo.
+    */
+    var b = `El valor de numberFive es ${numberFive}`; //Aquí se llama al valor de la variable numberFive.
+    console.log(b);
+
+    //Template abarcando múltiples líneas.
+    var c = `Esta es una cadena
+    escrita en dos líneas`;
+    alert(c);
+  </script>
+</head>
+<body>
+  <h1>Templates String</h1>
+  <p>
+    Son un tipo especial de cadena con formato, similares a la interpolación en otros lenguajes como Ruby,
+    se definen con un par de caracteres back-tick (`) o acentos agudos del francés, a diferencia de las cadenas
+    normales que usan comillas sencillas o dobles.
+  </p>
+</body>
+</html>
