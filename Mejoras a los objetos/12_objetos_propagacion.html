@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Objetos de propagación o spread</title>
+  <script>
+    /************************************** Ejemplo en funciones **************************************/
+    console.log("/************************************** Ejemplo en funciones **************************************/");
+    /**
+     * Suma dos números y retorna el resultado.
+     * @param {number} a
+     * @param {number} b
+     * @returns {number}
+    */
+    const suma = (a, b) => a + b;
+    let nums = [3, 5, 4];
+    console.log(suma(...nums)); // Es igual a nums[0], nums[1].
+
+    // Agregar arreglo dentro de otro.
+    let arregloUno = ['c', 'd', 'e'];
+    let arregloDos = ['a', 'b', ...arregloUno, 'f', 'g']; // Va a contener: [ "a", "b", "c", "d", "e", "f", "g" ]
+    console.log(arregloDos);
+
+    // Agregar un objeto dentro de otro.
+    let objA = {a:5, b:6, c:3};
+    let objB = {...objA, d:7}; // { a: 5, b: 6, c: 3, d: 7 }
+    console.log(objB);
+
+    // Spread como parámetro, es decir, "n" parámetros
+    function fun1(...numeros){
+      console.log(numeros.length); // Se muestra en consola el tamaño del elemento.
+    }
+    fun1(); // 0
+    fun1(5); // 1
+    fun1(5, 6, 7); // 3
+
+  </script>
+</head>
+<body>
+  <h1>Spread</h1>
+  <p>
+    La sintaxis de <strong>Spread</strong> permite expandir la expresión para los siguientes casos:
+    <ul>
+      <li>Arreglos (arrays)</li>
+      <li>Llamadas a funciones</li>
+      <li>Múltiple destructuring de variables</li>
+    </ul>
+    Ejemplo en funciones:
+  </p>
+</body>
+</html>
