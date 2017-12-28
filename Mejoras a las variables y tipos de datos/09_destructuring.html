@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Destructuring, asignar valores de forma rápida</title>
+  <script>
+    // Destructuring en arreglos.
+    let foo = ['uno', 'dos', 'tres']; // Declaramos un arreglo.
+    let[one, two, three] = foo; // Destructuring: relacionamos los valores del arreglo con cada "variable" del destructuring.
+    console.log(one); // Al llamar a la variable "one" nos va a mostrar el valor asignado del arreglo.
+
+    // Destructuring en objetos.
+    // Declaramos un objeto. El objeto contiene los métodos: cuadrado, circulo, texto.
+    let modulo = {
+      cuadrado(Ion){ console.log(Ion*Ion); },
+      circulo(radio){ console.log(radio * Math.PI); },
+      texto(text){ console.log(text); },
+    }
+    let {cuadrado,texto} = modulo; // Declaramos un destructuring donde le asignamos los métodos del objeto
+    cuadrado(5); // Retorna el cuadrado del 5.
+    //circulo(10); // No va a funcionar porque no lo asignamos en el destructuring.
+    texto("Hola"); //Muestra el mensaje en la consola.
+
+    // Destructuring para pasar objetos a una función.
+    let juana = { nombre: 'Juana', paterno: 'Pérez' }; // Declaramos el objeto juana.
+    let juan = { nombre: 'Juan', paterno: 'López', materno: 'Pérez' }; // Declaramos el objeto juan.
+
+    /**
+    * Función que imprime el nombre completo de la persona en consola. Recibe como parámetros un destructuring.
+    * @param {object} object 
+    */
+    function nombreCompleto({nombre, paterno, materno = 'N/A'}){
+      console.log(`Hola ${nombre} ${paterno} ${materno}`);
+    }
+    console.log(nombreCompleto(juana)); //Pasamos como parámetro el objeto juana.
+    console.log(nombreCompleto(juan)); //Pasamos como parámetro el objeto juan.
+  </script>
+</head>
+<body>
+  <h1>Destructuring</h1>
+  <p>
+    <strong>Destructuring</strong> es un nuevo método para extraer datos rápidamente de un objeto {} o un
+    arreglo [] sin tener que escribir mucho código. <br>
+    <strong>Destructuring</strong> también puede ser usado para pasar objetos a una función, permitiéndonos
+    obtener propiedades específicas de un objeto. <br>
+    También nos permite asignar valores por default como argumentos.
+  </p>
+</body>
+</html>
