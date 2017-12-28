@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Internationalization & Localization</title>
+  <script>
+    /************************************** Collation **************************************/
+    console.log("/************************************** Collation **************************************/");
+    // En alemán "ä" se ordena junto a "a".
+    // En sueco "ä" se ordena después de la "z".
+    var lista = ["ä", "a", "z"];
+    var l10nDE = new Intl.Collator("de"); // El l10n es por estándar y luego las dos siglas del idioma.
+    var l10nSV = new Intl.Collator("SV");
+    console.log(l10nDE.compare("ä","z") === -1); // Retorna true.
+    console.log(l10nSV.compare("ä","z") === +1); // Retorna true.
+    console.log(lista.sort(l10nDE.compare)); // [ "a", "ä", "z" ]
+    console.log(lista.sort(l10nSV.compare)); // [ "a", "z", "ä" ]
+
+    /************************************** NumberFormat **************************************/
+    console.log("/************************************** NumberFormat **************************************/");
+    // Tabla de lenguajes aquí: https://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx
+    var l10nEN = new Intl.NumberFormat("en-US");
+    var l10nDE = new Intl.NumberFormat("de-DE");
+    console.log(l10nEN.format(1234567.89) === "1,234,567.89");
+    console.log(l10nDE.format(1234567.89) === "1.234.567,89");
+
+    console.log("/************************************** NumberFormat: Formato de monedas **************************************/");
+    var l10nUSD = new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"});
+    var l10nGBP = new Intl.NumberFormat("en-GB", {style: "currency", currency: "GBP"});
+    var l10nEUR = new Intl.NumberFormat("de-DE", {style: "currency", currency: "EUR"});
+    console.log(l10nUSD.format(100200300.40) === "$100,200,300.40");
+    console.log(l10nGBP.format(100200300.40) === "£100,200,300.40");
+    console.log(l10nEUR.format(100200300.40) === "100.200.300,40 €");
+
+    console.log("/************************************** NumberFormat: Formato de fechas **************************************/");
+    var l10nEN = new Intl.DateTimeFormat("en-US");
+    var l10nDE = new Intl.DateTimeFormat("de-DE");
+    console.log(l10nEN.format(new Date("2015-01-02")));
+    console.log(l10nDE.format(new Date("2015-01-02")));
+  </script>
+</head>
+<body>
+  <h1>Internationalization & Localization</h1>
+  <p>
+    <strong>Collation:</strong> podemos modificar el método <strong>sort()</strong> sobre los diferentes idiomas:
+    <pre>
+      // En alemán "ä" se ordena junto a "a".
+      // En sueco "ä" se ordena después de la "z".
+      var lista = ["ä", "a", "z"];
+      var l10nDE = new Intl.Collator("de"); // El <strong>l10n</strong> es por estándar y luego las dos siglas del idioma.
+      var l10nSV = new Intl.Collator("SV");
+      console.log(l10nDE.compare("ä","z") === -1); // Retorna true.
+      console.log(l10nSV.compare("ä","z") === +1); // Retorna true.
+      console.log(lista.sort(l10nDE.compare)); // [ "a", "ä", "z" ]
+      console.log(lista.sort(l10nSV.compare)); // [ "a", "z", "ä" ]
+    </pre>
+    Formateo de números según su zona (<a href="https://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx" target="_blank">Tabla de lenguajes</a>):
+    <pre>
+      var l10nEN = new Intl.NumberFormat("en-US");
+      var l10nDE = new Intl.NumberFormat("de-DE");
+      console.log(l10nEN.format(1234567.89) === "1,234,567.89");
+      console.log(l10nDE.format(1234567.89) === "1.234.567,89");
+    </pre>
+    Formateo de monedas:
+    <pre>
+      var l10nUSD = new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"});
+      var l10nGBP = new Intl.NumberFormat("en-GB", {style: "currency", currency: "GBP"});
+      var l10nEUR = new Intl.NumberFormat("de-DE", {style: "currency", currency: "EUR"});
+      console.log(l10nUSD.format(100200300.40) === "$100,200,300.40");
+      console.log(l10nGBP.format(100200300.40) === "£100,200,300.40");
+      console.log(l10nEUR.format(100200300.40) === "100.200.300,40 €");
+    </pre>
+    Formateo de fechas:
+    <pre>
+      var l10nEN = new Intl.DateTimeFormat("en-US");
+      var l10nDE = new Intl.DateTimeFormat("de-DE");
+      console.log(l10nEN.format(new Date("2015-01-02")));
+      console.log(l10nDE.format(new Date("2015-01-02")));
+    </pre>
+  </p>
+</body>
+</html>
