@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nuevas características de los objetos en ES6</title>
+  <script>
+    /************************************** Sintaxis corta **************************************/
+    console.log("/************************************** Sintaxis corta **************************************/");
+    var x = 10, y = 20; // Declaramos dos variables.
+    obj = {x:x, y:y} // Antes: Declaramos un objeto y le asignamos los valores de las variables
+    console.log(`X:  ${obj.x} & Y: ${obj.y}`);
+    obj2 = {x,y} // Ahora: Declaramos un objeto y le asignamos los valores de las variables
+    console.log(`X:  ${obj2.x} & Y: ${obj2.y}`);
+
+    /************************************** Métodos **************************************/
+    console.log("/************************************** Métodos **************************************/");
+    objC = {
+      suma (a, b) { return a + b },
+      multiplica(x, y) { return x * y },
+      *num(x, y) {}
+    }
+    console.log(objC.suma(10,3));
+    console.log(objC.multiplica(10,3));
+
+    /************************************** Propiedad Calculada **************************************/
+    console.log("/************************************** Propiedad Calculada **************************************/");
+    
+    // Declaramos un objeto y dentro posee un calpo calculado que llama a la función num.
+    let objD = {
+      foo: "bar",
+      ["id" + num()]: 4
+    }
+    console.log(objD);
+
+    /**
+     * Método que retorna un número entero aleatorio entre 0 y 10.
+     * @returns {number}
+    */
+    function num(){
+      return Math.floor(Math.random()*10);
+    }
+
+    /************************************** Método assign **************************************/
+    console.log("/************************************** Método assign **************************************/");
+    var o1 = {a:1};
+    var o2 = {b:2};
+    var o3 = {c:3};
+    var objE = Object.assign(o1, o2, o3);
+    console.log(objE); // { a: 1, b: 2, c: 3 }
+    console.log(o1); // { a: 1, b: 2, c: 3 }
+  </script>
+</head>
+<body>
+  <h1>Objetos</h1>
+  <ol>
+    <li>
+      Sintaxis corta para los objetos: <br>
+      Antes:
+      <pre>obj = {x:x, y:y}</pre>
+      Ahora:
+      <pre>obj = {x, y}</pre>
+    </li>
+    <li>
+      Soporte de nombres calculados en la definición de propiedades:
+      <pre>
+        let obj = {
+          foo: "bar",
+          ["id" + num()]: 4
+        }
+      </pre>
+    </li>
+    <li>
+      Soporte de notación tipo método en la definición de propiedades, en forma regular y como función generadora.
+      <pre>
+        obj = {
+          foo(a, b){},
+          bar(x, y){},
+          *num(x, y){}
+        }
+      </pre>
+    </li>
+    <li>
+      Método <strong>assign()</strong> para copiar objetos:
+      <pre>
+        var o1 = {a:1};
+        var o2 = {b:2};
+        var o3 = {c:3};
+
+        var obj = Object.assign(o1, o2, o3);
+        console.log(obj); // {a:1, b:2, c:3}
+        console.log(o1); // {a:1, b:2, c:3}
+      </pre>
+    </li>
+  </ol>
+</body>
+</html>
