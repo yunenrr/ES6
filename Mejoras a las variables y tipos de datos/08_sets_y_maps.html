@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Conjuntos (sets) y mapas (maps)</title>
+  <script>
+    // Declaramos un Set.
+    var set = new Set();
+    set.add("cadena1").add("cadena2"); // Agregamos datos al set.
+    set.add("cadena1");
+    console.log("El tamaño del set es de: " + set.size); // Obtenemos el tamaño del set, es 2, porque el set no permite valores duplicados.s
+    console.log(set.has("hola")); // Va a retornar un false, debido a que no existe en el set.
+
+    // Declaramos un Map.
+    var map = new Map();
+    map.set("hola", 42); // Añadimos el conjunto: hola: 42.
+    map.set("a", 34); // Añadimos el conjunto: a: 34.
+    console.log(map.get("a")); // Obtiene el valor asociado a la clase
+  </script>
+</head>
+<body>
+  <h1>Maps y Sets</h1>
+  <p>
+    Los <strong>mapas</strong> son una estructura de datos que almacenan pares de llave (<strong>key</strong>) y
+    valor (<strong>value</strong>), los conjuntos (<strong>Set</strong>) tienen la característica de no aceptar
+    duplicados, y ambos permiten búsquedas eficientes cuando se tiene un gran volumen de información porque no 
+    guardan sus elementos ordenados por un índice, como ocurre con los arreglos.
+  </p>
+</body>
+</html>
