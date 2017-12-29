@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>POO (Programación Orientada a Objetos)</title>
+  <script>
+    /************************************** Clase **************************************/
+    console.log("/************************************** Clase **************************************/");
+    /**
+     * Clase que permite realizar cálculos sobre rectángulos.
+     */
+    class Rectangulo{
+      /**
+       * Método constructor de la clase Rectangulo, inicializa la base y la altura.
+       * @param {number} base 
+       * @param {number} altura 
+       */
+      constructor(base, altura){
+        this.base = base;
+        this.altura = altura;
+      }
+
+      /**
+       * Método que calcula el área del rectángulo.
+       * @returns {number}
+       */
+      calcArea(){
+        return this.base * this.altura;
+      }
+    }
+
+    let r = new Rectangulo(5,10);
+    console.log(r.calcArea());
+  </script>
+</head>
+<body>
+  <h1>Class</h1>
+  <p>
+    <ul>
+      <li>Ahora podemos hacer clases por medio de la sentencia <strong>class</strong>.</li>
+      <li>Podemos utilizar el método <strong>constructor()</strong> para crear la función constructora.</li>
+      <li>Los lenguajes tradicionales basados en clases ofrecen la palabra reservada <strong>this</strong> para referenciar la instancia actual de la clase.</li>
+      <li>En JS <strong>this</strong> se refiere <strong>al contexto de la llamada</strong> y como tal puede ser cambiado a algo más que un objeto.</li>
+      <li>Un objeto es una instancia de la clase, la cual es creada usando el operador <strong>new</strong>.</li>
+      <li>Cuando se usa un punto para acceder al método del objeto, <strong>this</strong> se va a referir al objeto a la izquierda al punto.</li>
+    </ul>
+  </p>
+  <h1>Herencia</h1>
+  <p>
+    Al igual que en otros lenguajes de programación, una clase puede extender de otra clase heredando métodos o propiedades de la clase padre. <br>
+    La función <strong>super()</strong> ejecuta el método con el mismo nombre desde el que se está llamando a <strong>super()</strong>, de esta forma al definir
+    el nuevo constructor llamamos a <strong>super()</strong> y le pasamos los mismos parámetros que recibe el constructor, entonces se ejecuta ese constructor y 
+    luego el código del nuevo.
+  </p>
+  <h1>Getters & Setters</h1>
+  <p>
+    <ul>
+      <li>En algunos lenguajes de programación (como <strong>Java</strong>) existen los <strong>getters & setters</strong>.</li>
+      <li>Estos métodos que se usan para controlar variables internas de un objeto (propiedades).</li>
+      <li>Para usarlos simplemente se agrega <strong>get</strong> o <strong>set</strong> delante del nombre del método.</li>
+      <li>
+        Definir un método <strong>get</strong> con el nombre que quieras (no puede ser el nombre de la propiedad) y este debería devolver el valor deseado (técnicamente
+        puede hacer cualquier cosa el método), o defines un método <strong>set</strong> con otro nombre (tampoco el mismo de la propiedad) y que recibe el nuevo valor y 
+        lo asigna a <strong>this</strong>.
+      </li>
+    </ul>
+  </p>
+  <h1>Métodos estáticos</h1>
+  <p>
+    Al igual que en otros lenguajes también va a ser posible crear métodos estáticos usando la palabra clase <strong>static</strong> antes del nombre del método. Ejemplo:
+    <pre>
+      /**
+      * Clase de ejemplo con un método estático.
+      */
+      class myClass {
+        /**
+        * Ejemplo de método estático.
+        * @returns {string}
+        */
+        static myMethod(){
+          return 'hello world';
+        }
+      }
+    </pre>
+    Luego para poder usarlo simplemente llamas al método desde la clase sin la necesidad de instanciarlo:
+    <pre>let mensaje = myClass.myMethod();</pre>
+  </p>
+  <h1>Características</h1>
+  <p>
+    <ul>
+      <li>Los nombres de las clases no pueden ser <strong>eval</strong> ó <strong>arguments</strong>.</li>
+      <li>No están permitidos nombres de clase repetidos.</li>
+      <li>
+        El nombre constructor solo puede ser usado para métodos, no para <strong>getters</strong>, <strong>setters</strong>
+        o un generador de métodos.
+      </li>
+      <li>Las clases no se pueden llamar antes de definirse.</li>
+      <li>Todavía se puede instanciar la clase desde cualquier parte, solo es necesario que esté definida.</li>
+    </ul>
+  </p>
+</body>
+</html>
