@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>El manejo de las llamadas de callback por medio de las promesas</title>
+  <script>
+    /************************************** Promises with arrows **************************************/
+    let myPromises = new Promise(
+      (resolve, reject) => {
+        // Muestra todo bien
+        setTimeout(
+          () => {
+            resolve("Todo bien...con tiempo!");
+          }, 1000
+        );
+
+        // Muestra todo bien
+        setTimeout(
+          () => {
+            reject("Todo mal...con tiempo!");
+          }, 1500
+        );
+      }
+    );
+
+    myPromises.then(
+      (res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      }
+    );
+
+    /************************************** Promises with functions **************************************/
+    let miPromesa = new Promise(
+      // Esta función interna (o arrow) es OBLIGATORIA para los PROMISES
+      function (todoBien, todoMal){
+        let resultado = true;
+
+        if(resultado){
+          todoBien("listo");
+        } else {
+          todoMal("algo falló");
+        }
+      }
+    );
+
+    /*
+    El then se ejecuta cuando el promises se realizó correctamente, el catch si ocurrió algún error.
+    */
+    miPromesa.then(
+      function(resultado){
+        console.log("El resultado es: "+ resultado);
+      }
+    ).catch(
+      function(resultado){
+        console.log("El resultado es: "+ resultado);
+      }
+    );
+
+    /************************************** Promises encadenadas **************************************/
+    // Declaramos todas las promesas.
+    let promesaPrimera = function(){
+      return new Promise(
+        function(resolve, reject){
+          resolve("Primer Promesa /");
+        }
+      );
+    }
+
+    let promesaSegunda = function(msg){
+      return new Promise(
+        function(resolve, reject){
+          resolve(" " + msg + "Segunda Promesa /");
+        }
+      );
+    }
+
+    let promesaTercera = function(msg){
+      return new Promise(
+        function(resolve, reject){
+          resolve(" " + msg + "Tercera Promesa");
+        }
+      );
+    }
+
+    // Encadenamos las promesas.
+    promesaPrimera().then(
+      function(resultado){
+        return promesaSegunda(resultado);
+      }
+    ).then(
+      function(resultado){
+        return promesaTercera(resultado);
+      }
+    ).then(
+      function(resultado){
+        console.log("Final: " + resultado);
+      }
+    );
+
+    /************************************** Promises con all **************************************/
+    let miPrimerPromesa = new Promise(
+      (resolve, reject) => {
+        setTimeout( () => { resolve("Promesa 1 - Todo bien!"); }, 1000 );
+      }
+    );
+
+    let miSegundaPromesa = new Promise(
+      (resolve, reject) => {
+        setTimeout( () => { resolve("Promesa 2 - Todo bien!"); }, 1500 );
+      }
+    );
+
+    // Preguntamos el estado de ambas promesas.
+    Promise.all([miPrimerPromesa, miSegundaPromesa]).then(
+      (data) => { console.log(data); }
+    ).catch(
+      (err) => { console.log(err); }
+    );
+  </script>
+</head>
+<body>
+  <h1>Promises</h1>
+  <p>
+    <ul>
+      <li>
+        El flujo de informaión de Internet tiene características <u>asíncronas</u>, lo que
+        significa que mientras esperemos el resultado de una operación como por 
+        ejemplo: que se carguen los datos de una página web, un programa puede realizar 
+        otras operaciones y tulizarlo cuando el resultado esté listo.
+      </li>
+      <li>
+        Las "promesas" (<strong>promises</strong>) son objetos que representan esta clase de 
+        operaciones y los datos que se obtienen.
+      </li>
+      <li>
+        Las promesas nos sirven para administrar las funciones de <strong>callback</strong>,
+        procesos asíncronos.
+      </li>
+      <li>Una promesa tiene tres estados: pending, fulfilled (success) y rejected (error).</li>
+      <li>Las promesas se pueden encadenar.</li>
+      <li>
+        Para enviar información dentro de las promesas, se envían dentro de <strong>resolve()</strong>
+        y de <strong>reject()</strong>, de dentro de <strong>return</strong>.
+      </li>
+      <li>Con <strong>throw</strong> cortamos las promesas.</li>
+    </ul>
+  </p>
+  <h2>Crear una promesa</h2>
+  <p>
+    <ul>
+      <li><strong>new Promise(function(resolve, reject){})</strong></li>
+      <li>La opción <strong>resolve()</strong> regresa el valor correcto (success).</li>
+      <li>La opción <strong>reject()</strong> regresa el valor erróneo (error).</li>
+    </ul>
+  </p>
+  <h2>Llamar a las promesas</h2>
+  <p>
+    <ul>
+      <li>Tiene un método que es <strong>then</strong>, lee el valor correcto (success).</li>
+      <li>Tiene un método que es <strong>catch</strong>, lee el valor erróneo (error).</li>
+    </ul>
+  </p>
+  <h2>Más de una promesa</h2>
+  <p>
+    <ul>
+      <li>Encadenar varias promesas</li>
+      <li><strong>all[]</strong> indican si se cumplen todas las promesas.</li>
+      <li><strong>race[]</strong> indican si se cumple "alguna" de las promesas.</li>
+    </ul>
+  </p>
+</body>
+</html>
