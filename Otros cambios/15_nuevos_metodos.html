@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nuevos métodos</title>
+  <script>
+    /************************************** Assign **************************************/
+    console.log("/************************************** Assign **************************************/");
+    var dest = {quux:0}
+    var src1 = {foo:1, bar: 2}
+    var src2 = {foo:3, baz: 4}
+    Object.assign(dest, src1,src2);
+    console.log(dest);
+
+    /************************************** find & findIndex **************************************/
+    console.log("/************************************** find & findIndex **************************************/");
+    console.log([1,3,4,2].find(x => x>3)); // Retorna el primer elemento del arreglo que cumpla la condición: superiores a 3.
+    console.log([1,3,4,2].findIndex(x => x>3)); // Retorna la posición en el arreglo del primer elemento que tengan un valor superior que 3.
+
+    /************************************** repeat **************************************/
+    console.log("/************************************** repeat **************************************/");
+    console.log("2".repeat(4*2)); // Repite el string (2) la cantidad de veces indicadas en el parámetro, es decir, 4*2.
+    console.log("foo".repeat(3)); // Muestra "foo" 3 veces.
+
+    /************************************** startsWith, endsWith, includes **************************************/
+    console.log("/************************************** startsWith, endsWith, includes **************************************/");
+    let cadena = "hola cara de bola y pez";
+    console.log(cadena.startsWith("ola", 1)); // Busca el string "ola" a partir de la posición indicada, en este caso es 1.
+    console.log(cadena.endsWith("pez")); // Busca el string "pez", en los últimos carácteres del string cadena.
+    console.log(cadena.includes("ola")); // Busca que exista el string "hola", independientemente de la posición en la cadena.
+    console.log(cadena.includes("ola", 1)); // Busca que exista el string "hola", a partir de la posición 1 en la cadena.
+    console.log(cadena.includes("ola", 2)); // Busca que exista el string "hola", a partir de la posición 2 en la cadena.
+
+    /************************************** isNaN, isFinite **************************************/
+    console.log("/************************************** isNaN, isFinite **************************************/");
+    console.log(Number.isNaN(42)); // false
+    console.log(Number.isNaN(NaN)); // true
+
+    console.log(Number.isFinite(Infinity)); // false
+    console.log(Number.isFinite(-Infinity)); // false
+    console.log(Number.isFinite(NaN)); // false
+    console.log(Number.isFinite(123)); // true
+
+    /************************************** isSafeInteger **************************************/
+    console.log("/************************************** isSafeInteger **************************************/");
+    console.log(Number.isSafeInteger(42)); // true
+    console.log(Number.isSafeInteger(9007199254740992)); // false
+
+    /************************************** trunc **************************************/
+    console.log("/************************************** trunc **************************************/");
+    console.log(Math.trunc(42.7)); // 42, básicamente quita los decimales, no redondea a diferencia del round.
+    console.log(Math.trunc(0.1)); // 0
+    console.log(Math.trunc(-0.1)); // -0
+
+    /************************************** sign **************************************/
+    console.log("/************************************** sign **************************************/");
+    console.log(Math.sign(7)); // 1
+    console.log(Math.sign(0)); // 0
+    console.log(Math.sign(-0)); // -0
+    console.log(Math.sign(-7)); // -1
+    console.log(Math.sign(NaN)); // NaN
+  </script>
+</head>
+<body>
+  <h2>Asignación de propiedad de objeto:</h2>
+  <p>
+    Nueva función para asignar propiedades enumerables de uno o más objetos fuente a un objeto de destino (método <strong>assign</strong>).
+  </p>
+  <h2>Búsqueda de un elemento en un arreglo:</h2>
+  <p>
+    Nueva función para encontrar un elemento en un arreglo.
+    <pre>
+      [1,3,4,2].find(x => x>3); //4
+      [1,3,4,2].findIndex(x => x>3); //2
+    </pre>
+  </p>
+  <h2>Repetición de cadenas</h2>
+  <p>
+    Nueva funcionalidad de repetición de cadenas.
+    <pre>
+      "".repeat(4*depth);
+      "foo".repeat(3);
+    </pre>
+  </p>
+  <h2>Búsqueda de cadenas</h2>
+  <p>
+    Nuevas funciones de cadena específicas para buscar una subcadena.
+    <pre>
+      var cadena = "hola cara de bola";
+      console.log(cadena.startsWith("ola", 1));
+      console.log(cadena.endsWith("ola"));
+      console.log(cadena.includes("ola", 1));
+      console.log(cadena.includes("ola", 1));
+      console.log(cadena.includes("ola", 2));
+    </pre>
+  </p>
+  <h2>Comprobación de tipo de número:</h2>
+  <p>
+    Nuevas funciones para verificar números que no son números y números finitos.
+    <pre>
+      Number.isNaN(42) === false;
+      Number.isNaN(NaN) === true;
+
+      Number.isFinite(Infinity) === false;
+      Number.isFinite(-Infinity) === false;
+      Number.isFinite(NaN) === false;
+      Number.isFinite(123) === true;
+    </pre>
+  </p>
+  <h2>Número de verificación de seguridad</h2>
+  <p>
+    Comprobar si un número entero está en el rango seguro, es decir, está representado correctamente por JavaScript (donde 
+    todos los números, incluidos los números enteros, son técnicamente números en coma flotante). &plusmn; 9007199254740991 o
+    &plusmn; 9,007,199,254,740,991.
+    <pre>
+      Number.isSafeInteger(42) === true;
+      Number.isSafeInteger(9007199254740992) === false;
+    </pre>
+  </p>
+  <h2>Comparación de números</h2>
+  <p>
+    Disponibilidad de un valor estándar de Epsilon para una comparación más precisa de los números de coma flotante.
+    <pre>
+      console.log(0.1 + 0.2 === 0.3); // false
+      console.log(Math.abs((0.1 + 0.2) - 0.3) < Number.EPSILON ); // true
+    </pre>
+  </p>
+  <h2>Número de truncamiento</h2>
+  <p>
+    Trunca un número de coma flotante a su parte integral, soltando completamente la parte fraccionaria.
+    <pre>
+      console.log(Math.trunc(42.7)); // 42
+      console.log(Math.trunc(0.1)); // 0
+      console.log(Math.trunc(-0.1)); // -0
+    </pre>
+  </p>
+  <h2>Determinación de signo de número</h2>
+  <p>
+    Determine el signo de un número, incluidos los casos especiales de cero firmado y no número.
+    <pre>
+        console.log(Math.sign(7)); // 1
+        console.log(Math.sign(0)); // 0
+        console.log(Math.sign(-0)); // -0
+        console.log(Math.sign(-7)); // -1
+        console.log(Math.sign(NaN)); // NaN
+    </pre>
+  </p>
+</body>
+</html>
